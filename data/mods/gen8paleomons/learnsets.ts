@@ -1719,7 +1719,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			gyroball: null,
 			irondefense: null,
 			ironhead: null,
-			king’sshield: null,
+			kingsshield: null,
 			magnetrise: null,
 			metalsound: null,
 			nightslash: null,
