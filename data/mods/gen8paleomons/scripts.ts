@@ -2725,4 +2725,5 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		delete this.modData('Learnsets', 'steelixcrystal').learnset.stealthrock;
 		delete this.modData('Learnsets', 'steelixcrystal').learnset.stompingtantrum;
 		delete this.modData('Learnsets', 'steelixcrystal').learnset.stoneedge;
+}
 };

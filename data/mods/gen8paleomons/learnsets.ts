@@ -1227,7 +1227,6 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			rest: ["9L1"],
 			return: ["9L1"],
 			round: ["9L1"],
-			round: ["9L1"],
 			scald: ["9L1"],
 			scorchingpebbles: ["9L1"],
 			sleeptalk: ["9L1"],
