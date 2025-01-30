@@ -1,4 +1,4 @@
-﻿export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
+export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
     kabutoancient: {
 		learnset: {
 			recover: ["9L1"],
@@ -1666,7 +1666,7 @@
 			gyroball: null,
 			irondefense: null,
 			ironhead: null,
-			king’sshield: null,
+			kingsshield: null,
 			magnetrise: null,
 			metalsound: null,
 			nightslash: null,

@@ -1985,7 +1985,7 @@ export const Scripts: {[k: string]: ModdedBattleScriptsData} = {
 		delete this.modData('Learnsets', 'aegislashancient').learnset.gyroball;
 		delete this.modData('Learnsets', 'aegislashancient').learnset.irondefense;
 		delete this.modData('Learnsets', 'aegislashancient').learnset.ironhead;
-		delete this.modData('Learnsets', 'aegislashancient').learnset.king’sshield;
+		delete this.modData('Learnsets', 'aegislashancient').learnset.kingsshield;
 		delete this.modData('Learnsets', 'aegislashancient').learnset.magnetrise;
 		delete this.modData('Learnsets', 'aegislashancient').learnset.metalsound;
 		delete this.modData('Learnsets', 'aegislashancient').learnset.nightslash;
