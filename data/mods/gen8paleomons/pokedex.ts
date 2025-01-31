@@ -1,4 +1,4 @@
-export const Pokedex: {[speciesid: string]: SpeciesData} = {
+export const Pokedex: {[speciesid: string]: ModdedSpeciesData} = {
 	kabutoancient: {
 		num: 1001,
 		name: "Kabuto-Ancient",
