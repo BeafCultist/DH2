@@ -86,6 +86,18 @@ export const Formats: FormatList = [
 		banlist: ['Uber', 'Arena Trap', 'Sand Veil', 'Quick Claw', 'Soul Dew', 'Baton Pass'],
 	},
 	{
+		name: "[Gen 1] Back to the Past",
+		   desc: `<b>[Gen 1] Back to the Past</b>: Adapting future gen moves and Pokemon into RBY`,
+		   threads: [
+				`&bullet; <a href="https://www.smogon.com/forums/threads/gen-1-back-to-the-past-slate-1-moves.3757618/">Back to the Past on Smogon Forums</a>`,
+		   ],
+		  mod: 'gen1backtothepast',
+		  ruleset: ['Standard', 'Data Mod'],
+			banlist: ['Uber'],
+			unbanlist: ['Seismitoad', 'Masquerain', 'Cursola', 'Skitter Smack', 'Burn Up', 'Drain Punch', 'Sappy Seed', "Focus Punch", 'Mud Shot',
+						],
+		},
+	{
 		name: "[Gen 9] Banhammers Cycle 3",
 		desc: `<b>Banhammers</b>: A metagame where players are allowed to ban Pokemon, Moves, Items, and Abilities through earning points in room tournaments.`,
 		threads: [
@@ -954,6 +966,7 @@ export const Formats: FormatList = [
 		banlist: ['Baton Pass', 'King\'s Rock', 'Razor Fang', 'Moody',
 		'Buginium Z', 'Darkinium Z', 'Dragonium Z', 'Electrium Z', 'Fairium Z', 'Fightinium Z', 'Firium Z', 'Flyinium Z', 'Ghostium Z', 'Grassium Z', 'Groundium Z', 'Icium Z', 'Normalium Z', 'Poisonium Z', 'Psychium Z', 'Rockium Z', 'Steelium Z', 'Waterium Z',
 		'Abomasite', 'Absolite', 'Houndoominite', 'Red Orb', 'Fish', 'Diamond Hand', 'Hoenn', 'Copen'],
+		unbanlist: ['Light of Ruin', 'Baddy Bad'],
 		onValidateTeam(team, format) {
 			/**@type {{[k: string]: true}}*/
 			let speciesTable = {};
@@ -980,6 +993,7 @@ export const Formats: FormatList = [
 		banlist: ['Baton Pass', 'King\'s Rock', 'Razor Fang', 'Moody',
 		'Buginium Z', 'Darkinium Z', 'Dragonium Z', 'Electrium Z', 'Fairium Z', 'Fightinium Z', 'Firium Z', 'Flyinium Z', 'Ghostium Z', 'Grassium Z', 'Groundium Z', 'Icium Z', 'Normalium Z', 'Poisonium Z', 'Psychium Z', 'Rockium Z', 'Steelium Z', 'Waterium Z',
 		'Abomasite', 'Absolite', 'Red Orb', 'Fish', 'Diamond Hand', 'Hoenn', 'Copen'],
+		unbanlist: ['Light of Ruin', 'Baddy Bad'],
 		onValidateTeam(team, format) {
 			/**@type {{[k: string]: true}}*/
 			let speciesTable = {};
@@ -1038,46 +1052,6 @@ export const Formats: FormatList = [
 				}
 			}
 		},
-	},
-	{
-		name: "[Gen 8] Megas for All: Kalos",
-		desc: ["<b>Megas for All</b>: A Pet Mod that aims to create unique Mega Evolutions for every fully evolved Pokémon. Current season is focused on the Kalos dex!",
-		      ],
-		threads: [
-				`&bullet; <a href="https://www.smogon.com/forums/threads/3671140/">Megas for All v7 on Smogon Forums</a>`,
-				`&bullet; <a href="https://docs.google.com/spreadsheets/d/1TdeAUUtjh0f_tcIBllbF_imgepwV-dV2YomoTCRlPgI/edit?usp=sharing">Spreadsheet</a>`,
-				`&bullet; <a href="http://megasforall.wikidot.com/">Wiki</a>`
-		      ],
-		ruleset: ['Standard NatDex', 'Z-Move Clause', 'Dynamax Clause', 'Mega Data Mod'],
-		banlist: [
-			'AG', 'Uber',
-			'Aegislash', 'Hoopa-Unbound', 'Greninja',
-			'Arena Trap', 'Moody', 'Power Construct', 'Shadow Tag',
-			'Baton Pass',
-			'Bright Powder', 'Lax Incense', 'King\'s Rock', 'Razor Fang', 'Quick Claw',
-		],
-		onValidateTeam(team, format) {
-			/**@type {{[k: string]: true}} */
-			let speciesTable = {};
-			for (const set of team) {
-				let template = this.dex.species.get(set.species);
-				if (template.tier !== 'Mega' && template.tier !== 'Kalos' && template.tier !== 'Kalos (NFE)') {
-					return [set.species + ' is not a part of the Kalos Pokédex.'];
-				}
-			}
-		},
-		onValidateSet(set) {
-			const problems: string[] = [];
-			const setHas: {[k: string]: true} = {};
-			let species = this.dex.species.get(set.species);
-			let item = this.dex.items.get(set.item);
-			let tierSpecies = species;
-
-			if (item.megaEvolves === species.name) {
-				if (item.megaStone && this.dex.species.get(item.megaStone).tier !== 'Mega') return [item.name + ' is not a legal Mega Stone.'];
-			}
-		},
-		mod: 'm4akalos',
 	},
 	{
 		name: "[Gen 9] Megas for All: Paldea",
@@ -1636,7 +1610,12 @@ export const Formats: FormatList = [
 		name: "[Gen 9] TeraMax",
 		mod: 'teramax',
 		ruleset: ['Standard', 'Data Mod'],
-		banlist: ['Uber', 'AG', 'Arena Trap', 'Moody', 'Shadow Tag', 'King\'s Rock', 'Baton Pass', 'Last Respects', 'Shed Tail', 'Wishing Stone > 1', 'Light Clay', 'Battle Bond', 'Melmetal-Gmax'],
+		banlist: [
+			'Uber', 'AG', 'Arena Trap', 'Moody', 'Shadow Tag', 'King\'s Rock', 'Baton Pass', 'Last Respects', 'Shed Tail',
+			'Wishing Stone > 1', 'Light Clay', 'Battle Bond', 'Melmetal-Gmax', 'Ogerpon-Hearthflame + Close Combat',
+			'Ogerpon-Hearthflame + Rock Blast', 'Ogerpon-Wellspring + Close Combat', 'Ogerpon-Wellspring + Rock Blast',
+			'Ogerpon-Cornerstone + Rock Blast',
+		],
 		onValidateTeam(team, format) {
 			/**@type {{[k: string]: true}}*/
 			let speciesTable = {};
@@ -2228,6 +2207,46 @@ export const Formats: FormatList = [
 	},
  */
 	{
+		name: "[Gen 8] Megas for All: Kalos",
+		desc: ["<b>Megas for All</b>: A Pet Mod that aims to create unique Mega Evolutions for every fully evolved Pokémon. Current season is focused on the Kalos dex!",
+		      ],
+		threads: [
+				`&bullet; <a href="https://www.smogon.com/forums/threads/3671140/">Megas for All v7 on Smogon Forums</a>`,
+				`&bullet; <a href="https://docs.google.com/spreadsheets/d/1TdeAUUtjh0f_tcIBllbF_imgepwV-dV2YomoTCRlPgI/edit?usp=sharing">Spreadsheet</a>`,
+				`&bullet; <a href="http://megasforall.wikidot.com/">Wiki</a>`
+		      ],
+		ruleset: ['Standard NatDex', 'Z-Move Clause', 'Dynamax Clause', 'Mega Data Mod'],
+		banlist: [
+			'AG', 'Uber',
+			'Aegislash', 'Hoopa-Unbound', 'Greninja',
+			'Arena Trap', 'Moody', 'Power Construct', 'Shadow Tag',
+			'Baton Pass',
+			'Bright Powder', 'Lax Incense', 'King\'s Rock', 'Razor Fang', 'Quick Claw',
+		],
+		onValidateTeam(team, format) {
+			/**@type {{[k: string]: true}} */
+			let speciesTable = {};
+			for (const set of team) {
+				let template = this.dex.species.get(set.species);
+				if (template.tier !== 'Mega' && template.tier !== 'Kalos' && template.tier !== 'Kalos (NFE)') {
+					return [set.species + ' is not a part of the Kalos Pokédex.'];
+				}
+			}
+		},
+		onValidateSet(set) {
+			const problems: string[] = [];
+			const setHas: {[k: string]: true} = {};
+			let species = this.dex.species.get(set.species);
+			let item = this.dex.items.get(set.item);
+			let tierSpecies = species;
+
+			if (item.megaEvolves === species.name) {
+				if (item.megaStone && this.dex.species.get(item.megaStone).tier !== 'Mega') return [item.name + ' is not a legal Mega Stone.'];
+			}
+		},
+		mod: 'm4akalos',
+	},
+	{
 		name: "[Gen 8] M4A Kalos VGC",
 		desc: ["<b>Megas for All</b>: A Pet Mod that aims to create unique Mega Evolutions for every fully evolved Pokémon. Current season is focused on the Kalos dex!",
 		      ],
@@ -2472,7 +2491,7 @@ export const Formats: FormatList = [
 		ruleset: ['Standard NatDex', 'Terastal Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Data Mod', 'Mega Data Mod'],
 		banlist: ['Uber', 'Power Construct', 'Berserk Gene', 'Moody',
 					'Normalium Z', 'Fairium Z', 'Fightinium Z', 'Firium Z', 'Flyinium Z', 'Darkinium Z', 'Dragonium Z', 'Buginium Z', 'Waterium Z', 'Electrium Z', 'Ghostium Z', 'Grassium Z', 'Groundium Z', 'Icium Z', 'Poisonium Z', 'Psychium Z', 'Rockium Z', 'Steelium Z', 'Pikanium Z', 'Aloraichium Z', 'Eevium Z', 'Snorlium Z', 'Mewnium Z', 'Ultranecrozium Z', 'Pikashunium Z', 'Decidium Z', 'Incinium Z', 'Primarium Z', 'Lycanium Z', 'Mimikium Z', 'Kommonium Z', 'Tapunium Z', 'Solganium Z', 'Lunalium Z', 'Marshadium Z',
-					'Bright Powder', 'Lax Incense', 'King\'s Rock', 'Razor Fang', 'Shed Tail', 'Light Clay', 'Damp Rock', 'Heat Rock',
+					'Bright Powder', 'Lax Incense', 'King\'s Rock', 'Razor Fang', 'Shed Tail', 'Damp Rock', 'Heat Rock',
 				'Rusted Sword', 'Rusted Shield'],
 		unbanlist: ['Battle Bond', 'Greninja-Bond', 'Greninja-Ash'],
 		teambuilderFormat: 'National Dex',
@@ -2523,7 +2542,7 @@ export const Formats: FormatList = [
 		ruleset: ['Standard NatDex', 'Terastal Clause','OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Data Mod', 'Mega Data Mod'],
 		banlist: ['Uber', 'OU', 'UUBL', 'Battle Bond', 'Power Construct', 'Berserk Gene', 'Moody',
 					'Normalium Z', 'Fairium Z', 'Fightinium Z', 'Firium Z', 'Flyinium Z', 'Darkinium Z', 'Dragonium Z', 'Buginium Z', 'Waterium Z', 'Electrium Z', 'Ghostium Z', 'Grassium Z', 'Groundium Z', 'Icium Z', 'Poisonium Z', 'Psychium Z', 'Rockium Z', 'Steelium Z', 'Pikanium Z', 'Aloraichium Z', 'Eevium Z', 'Snorlium Z', 'Mewnium Z', 'Ultranecrozium Z', 'Pikashunium Z', 'Decidium Z', 'Incinium Z', 'Primarium Z', 'Lycanium Z', 'Mimikium Z', 'Kommonium Z', 'Tapunium Z', 'Solganium Z', 'Lunalium Z', 'Marshadium Z',
-					'Bright Powder', 'Lax Incense', 'King\'s Rock', 'Razor Fang', 'Light Clay', 'Damp Rock', 'Heat Rock'],
+					'Bright Powder', 'Lax Incense', 'King\'s Rock', 'Razor Fang', 'Damp Rock', 'Heat Rock'],
 		unbanlist: ['Battle Bond', 'Greninja-Bond', 'Greninja-Ash'],
 		teambuilderFormat: 'National Dex UU',
 		onChangeSet(set) {
@@ -2573,7 +2592,7 @@ export const Formats: FormatList = [
 		ruleset: ['Standard NatDex', 'Terastal Clause','OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Data Mod', 'Mega Data Mod'],
 		banlist: ['Uber', 'OU', 'UUBL', 'UU', 'RUBL','Battle Bond', 'Power Construct', 'Berserk Gene', 'Moody',
 					'Normalium Z', 'Fairium Z', 'Fightinium Z', 'Firium Z', 'Flyinium Z', 'Darkinium Z', 'Dragonium Z', 'Buginium Z', 'Waterium Z', 'Electrium Z', 'Ghostium Z', 'Grassium Z', 'Groundium Z', 'Icium Z', 'Poisonium Z', 'Psychium Z', 'Rockium Z', 'Steelium Z', 'Pikanium Z', 'Aloraichium Z', 'Eevium Z', 'Snorlium Z', 'Mewnium Z', 'Ultranecrozium Z', 'Pikashunium Z', 'Decidium Z', 'Incinium Z', 'Primarium Z', 'Lycanium Z', 'Mimikium Z', 'Kommonium Z', 'Tapunium Z', 'Solganium Z', 'Lunalium Z', 'Marshadium Z',
-					'Bright Powder', 'Lax Incense', 'King\'s Rock', 'Razor Fang', 'Zen Mode', 'Light Clay', 'Damp Rock', 'Heat Rock'],
+					'Bright Powder', 'Lax Incense', 'King\'s Rock', 'Razor Fang', 'Zen Mode', 'Damp Rock', 'Heat Rock'],
 		unbanlist: ['Battle Bond', 'Greninja-Bond', 'Greninja-Ash'],
 		teambuilderFormat: 'National Dex RU',
 		onChangeSet(set) {
@@ -2661,7 +2680,38 @@ export const Formats: FormatList = [
 		desc: `Base stats of 70 and lower get doubled.`,
 		mod: 'badnboosted',
 		ruleset: ['Standard'],
-		banlist: ['AG', 'Moody', 'King\'s Rock', 'Razor Fang', 'Baton Pass', 'Last Respects', 'Eviolite', 'Huge Power', 'Pure Power'],
+		banlist: ['AG', 'Moody', 'King\'s Rock', 'Razor Fang', 'Baton Pass', 'Last Respects', 'Eviolite', 'Huge Power', 'Pure Power', 'Espathra'],
+		onBegin() {
+			this.add('-message', `Welcome to Bad 'n Boosted!`);
+			this.add('-message', `This is a Generation 9 Pet Mod where Pokemon's base stats of 70 or lower get doubled!`);
+			this.add('-message', `You can join our Discord now:`);
+			this.add('-message', `https://discord.gg/vYdSwRreNd`);
+		},
+	},
+	{
+		name: "[Gen 9] Doubles Bad 'n Boosted",
+		desc: `Base stats of 70 and lower get doubled.`,
+		mod: 'badnboosted',
+		gameType: 'doubles',
+		ruleset: ['Standard Doubles', '!Gravity Sleep Clause'],
+	},	
+	{
+		name: "[Gen 9] National Dex Bad 'n Boosted",
+		mod: 'badnboosted',
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Evasion Items Clause', 'Species Clause', 'Sleep Clause Mod', 'Mega Rayquaza Clause'],
+		banlist: ['ND AG', 'Shedinja', 'Assist', 'Baton Pass'],
+	},
+	{
+		name: "[Gen 9] Free-For-All Bad 'n Boosted",
+		mod: 'badnboosted',
+		gameType: 'freeforall',
+		rated: false,
+		tournamentShow: false,
+		ruleset: ['Standard', 'Sleep Moves Clause', '!Sleep Clause Mod', '!Evasion Items Clause'],
+		banlist: ['Moody', 'Shadow Tag', 'Toxic Chain', 'Toxic Debris', 'Acupressure', 'Aromatic Mist', 'Baton Pass', 'Coaching',
+			'Court Change', 'Decorate', 'Dragon Cheer', 'Final Gambit', 'Flatter', 'Fling', 'Floral Healing', 'Follow Me', 'Heal Pulse', 'Heart Swap', 'Last Respects',
+			'Malignant Chain', 'Poison Fang', 'Rage Powder', 'Skill Swap', 'Spicy Extract', 'Swagger', 'Toxic', 'Toxic Spikes',
+		],
 	},
 	{
 		name: "[Gen 9] Bad 'n Boosted Hackmons Cup",
@@ -2747,7 +2797,7 @@ export const Formats: FormatList = [
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/solomods-megathread.3711007/page-8#post-10124271">Clubmons on Smogon Forums</a>`,
 		],
-		banlist: ['Arena Trap', 'Moody', 'Sand Veil', 'Shadow Tag', 'Snow Cloak', 'King\'s Rock', 'Quick Claw', 'Baton Pass', 'Last Respects', 'Hidden Power', 'Absolite', 'Sablenite'],
+		banlist: ['Arena Trap', 'Moody', 'Sand Veil', 'Shadow Tag', 'Snow Cloak', 'King\'s Rock', 'Quick Claw', 'Baton Pass', 'Shed Tail', 'Last Respects', 'Hidden Power', 'Absolite', 'Sablenite'],
 		teambuilderFormat: 'National Dex',
 		onValidateTeam(team, format) {
 			/**@type {{[k: string]: true}}*/
@@ -4243,6 +4293,7 @@ export const Formats: FormatList = [
 		banlist: ['Baton Pass', 'King\'s Rock', 'Razor Fang', 'Moody',
 		'Buginium Z', 'Darkinium Z', 'Dragonium Z', 'Electrium Z', 'Fairium Z', 'Fightinium Z', 'Firium Z', 'Flyinium Z', 'Ghostium Z', 'Grassium Z', 'Groundium Z', 'Icium Z', 'Normalium Z', 'Poisonium Z', 'Psychium Z', 'Rockium Z', 'Steelium Z', 'Waterium Z',
 		'Abomasite', 'Absolite', 'Red Orb', 'Fish', 'Diamond Hand', 'Hoenn', 'Copen'],
+		unbanlist: ['Light of Ruin', 'Baddy Bad'],
 		onValidateTeam(team, format) {
 			/**@type {{[k: string]: true}}*/
 			let speciesTable = {};
@@ -4511,9 +4562,10 @@ export const Formats: FormatList = [
 
 		mod: 'sharedpowerironfist',
 		teambuilderFormat: "National Dex",
-		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Sleep Clause Mod', 'Data Mod'],
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Sleep Clause Mod', 'Data Mod', 'Mega Data Mod', 'Big Button Rule', 'MILF Rule', 'Ohmyrod Rule', 'Serious Rule', 'I love refrigerators Rule', 'Mario Kart Wii Clause'],
 		banlist: ['Baton Pass', 'King\'s Rock', 'Razor Fang', 'Moody',
 		'Buginium Z', 'Darkinium Z', 'Dragonium Z', 'Electrium Z', 'Fairium Z', 'Fightinium Z', 'Firium Z', 'Flyinium Z', 'Ghostium Z', 'Grassium Z', 'Groundium Z', 'Icium Z', 'Normalium Z', 'Poisonium Z', 'Psychium Z', 'Rockium Z', 'Steelium Z', 'Waterium Z'],
+		unbanlist: ['Light of Ruin', 'Baddy Bad'],
 		restricted: [],
 		onValidateRule() {
 			if (this.format.gameType !== 'singles') {

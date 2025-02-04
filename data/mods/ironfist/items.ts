@@ -36,6 +36,10 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 		},
 		itemUser: ["Palkia-Origin", "The Pearl Hand"],
 	},
+	ultranecroziumz: {
+		inherit: true,
+		isNonstandard: null,
+	},
 	
 	//slate 1
 	kunai: {
@@ -286,7 +290,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 			priority: 1,
 		},
 		onStart(pokemon) {
-			this.add('-item', pokemon, 'Nerve Charm');
+			this.add('-message', `${pokemon.name} has a Nerve Charm!`);
 		},
 		onTryHit(pokemon, source, move) {
 			if (move.priority !== 0 && pokemon !== source) {
@@ -557,11 +561,10 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 			volatileStatus: 'bigbutton',
 		},
 		onDamagingHit(damage, target, source, move) {
-			if(!source.volatiles['bigbutton'] && source.set.teraType !== "Bug" && target.useItem()) {
-				source.addVolatile('bigbutton');
-			}
+			if (source.volatiles['bigbutton'] || (source.terastallized && source.set.teraType === "Bug")) return;
+			if (target.useItem()) source.addVolatile('bigbutton');
 		},
-		shortDesc: "On hit, force the opponent to use Big Button. Single use.",
+		shortDesc: "On hit, force the opponent to use Big Button if not Terastallized Bug. Single use.",
 		rating: 3,
 	},
 
@@ -602,7 +605,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 			if (move.category !== 'Status') source.shuriken ++;
 			else source.shuriken = 0;
 			if (source.shuriken >= 3) {
-				this.boost({def: 1, spd: 1});
+				this.boost({atk: 1, spa: 1});
 				source.shuriken = 0;
 			}
 		},
