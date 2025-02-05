@@ -227,7 +227,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "Paleomons",
 		doublesTier: "Paleomons Doubles",
 	},
-	scorcharniaaverage: {
+	scorcharnia: {
 		tier: "Paleomons",
 		doublesTier: "Paleomons Doubles",
 	},
