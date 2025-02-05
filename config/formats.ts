@@ -2417,11 +2417,10 @@ export const Formats: FormatList = [
 		onValidateTeam(team, format) {
 			/**@type {{[k: string]: true}} */
 			let speciesTable = {};
-			let allowedTiers = ['Paleomons', 'Paleomons NFE', 'Paleomons LC'];
 			for (const set of team) {
 				let template = this.dex.species.get(set.species);
-				if (template.tier !== 'Paleomons' && template.tier !== 'Paleomons NFE' && template.tier !== 'Paleomons LC') {
-					return [set.species + ' is not legal in the Paleomons format.'];
+				if (template.tier !== 'Paleomons') {
+					return [set.species + ' is not usable in Paleomons.'];
 				}
 			}
 		},
