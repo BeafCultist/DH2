@@ -2400,32 +2400,32 @@ export const Formats: FormatList = [
       // ruleset: ['Standard', 'Dynamax Clause', 'Data Mod'],
 		// banlist: ['Uber', 'Arena Trap', 'Moody', 'Shadow Tag', 'Baton Pass'],
 	// },
-	// {
-		// name: "[Gen 8] Paleomons",
-		// desc: [
-			// "<b>Paleomons</b>: A Sword and Shield metagame that aims to create a micrometa full of ancient Pokemon."
-		// ],
-		// threads: [
-			// `&bullet; <a href="https://www.smogon.com/forums/threads/paleomons-slate-3-non-dino-stars-dimetrodon-dodo-sea-scorpion-submission-phase.3695565/">Paleomons on Smogon Forums`,
-		// ],
+	{
+		name: "[Gen 8] Paleomons",
+		desc: [
+			"<b>Paleomons</b>: A Sword and Shield metagame that aims to create a micrometa full of ancient Pokemon."
+		],
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/paleomons-slate-3-non-dino-stars-dimetrodon-dodo-sea-scorpion-submission-phase.3695565/">Paleomons on Smogon Forums`,
+		],
 
-		// mod: 'paleomons',
-		// ruleset: ['Standard NatDex', 'Z-Move Clause', 'Data Mod', 'Mega Data Mod'],
-		// banlist: [
-			// 'Arena Trap', 'Moody', 'Shadow Tag', 'Baton Pass',
-		// ],
-		// onValidateTeam(team, format) {
-			// /**@type {{[k: string]: true}} */
-			// let speciesTable = {};
-			// let allowedTiers = ['Paleomons', 'Paleomons NFE', 'Paleomons LC'];
-			// for (const set of team) {
-				// let template = this.dex.species.get(set.species);
-				// if (template.tier !== 'Paleomons' && template.tier !== 'Paleomons NFE' && template.tier !== 'Paleomons LC') {
-					// return [set.species + ' is not legal in the Paleomons format.'];
-				// }
-			// }
-		// },
-	// },
+		mod: 'paleomons',
+		ruleset: ['Standard NatDex', 'Z-Move Clause', 'Data Mod', 'Mega Data Mod'],
+		banlist: [
+			'Arena Trap', 'Moody', 'Shadow Tag', 'Baton Pass',
+		],
+		onValidateTeam(team, format) {
+			/**@type {{[k: string]: true}} */
+			let speciesTable = {};
+			let allowedTiers = ['Paleomons', 'Paleomons NFE', 'Paleomons LC'];
+			for (const set of team) {
+				let template = this.dex.species.get(set.species);
+				if (template.tier !== 'Paleomons' && template.tier !== 'Paleomons NFE' && template.tier !== 'Paleomons LC') {
+					return [set.species + ' is not legal in the Paleomons format.'];
+				}
+			}
+		},
+	},
 	{
 		name: "[Gen 8] Restrictions",
 		desc: `<b>Restrictions</b>: A metagame made up of brand new Pok&eacute;mon that are made according to various random and non-random restrictions.`,
