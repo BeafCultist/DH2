@@ -2419,6 +2419,7 @@ export const Formats: FormatList = [
 			let speciesTable = {};
 			for (const set of team) {
 				let template = this.dex.species.get(set.species);
+				console.log(template.tier)
 				if (template.tier !== 'Paleomons') {
 					return [set.species + ' is not usable in Paleomons.'];
 				}
