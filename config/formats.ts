@@ -2410,7 +2410,7 @@ export const Formats: FormatList = [
 		],
 
 		mod: 'gen8paleomons',
-		ruleset: ['Obtainable', 'Team Preview', 'Sleep Clause Mod', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'Evasion Items Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 
+		ruleset: ['Standard NatDex', 'Sleep Clause Mod', 'OHKO Clause', 'Evasion Items Clause', 'Evasion Moves Clause',  
 			'Z-Move Clause', 'Data Mod', 'Mega Data Mod'],
 		banlist: [
 			'Arena Trap', 'Moody', 'Shadow Tag', 'Baton Pass',
