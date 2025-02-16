@@ -1,4 +1,4 @@
-export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
+export const Learnsets: {[speciesid: string]: LearnsetData} = {
   kabutoancient: {
 		learnset: {
 			recover: ["8L1"],
