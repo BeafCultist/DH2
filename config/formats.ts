@@ -2402,22 +2402,16 @@ export const Formats: FormatList = [
 	// },
 	{
 		name: "[Gen 8] Paleomons",
-		desc: [
-			"<b>Paleomons</b>: A Sword and Shield metagame that aims to create a micrometa full of ancient Pokemon."
-		],
+		desc: `<b>Paleomons</b>: A Sword and Shield metagame that aims to create a micrometa full of ancient Pokemon."`,
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/paleomons-slate-3-non-dino-stars-dimetrodon-dodo-sea-scorpion-submission-phase.3695565/">Paleomons on Smogon Forums`,
 		],
-
 		mod: 'gen8paleomons',
-		ruleset: ['Standard NatDex', 'Sleep Clause Mod', 'OHKO Clause', 'Evasion Items Clause', 'Evasion Moves Clause',  
-			'Z-Move Clause', 'Data Mod', 'Mega Data Mod'],
-		banlist: [
-			'Arena Trap', 'Moody', 'Shadow Tag', 'Baton Pass',
-		],
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Clause', 'Species Clause', 'Terastal Clause', 'Sleep Clause Mod', 'Z-Move Clause', 'Mega Data Mod', 'Data Mod'],
+		banlist: ['Arena Trap', 'Moody', 'Shadow Tag', 'Baton Pass',],
 		onValidateTeam(team, format) {
-			/**@type {{[k: string]: true}} */
 			let speciesTable = {};
+			let allowedTiers = ['Paleomons'];
 			for (const set of team) {
 				let template = this.dex.species.get(set.species);
 				console.log(template.tier)
