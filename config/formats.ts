@@ -2765,7 +2765,23 @@ export const Formats: FormatList = [
 				}
 			}
 		}
-  },
+    },
+	{
+		name: "[Gen 9] Beaftopia",
+		desc: `<b>[Gen 9] Beaftopia</b>: A meta where the only legal Pokemon are made by Beaf Cultist, the greatest Pet Modder.`,
+		mod: 'beaftopia',
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Clause', 'Species Clause', 'Terastal Clause', 'Sleep Clause Mod', 'Z-Move Clause', 'Mega Data Mod', 'Data Mod'],
+		onValidateTeam(team, format) {
+			let speciesTable = {};
+			let allowedTiers = ['Beaftopia'];
+			for (const set of team) {
+				let template = this.dex.species.get(set.species);
+				if (template.tier !== 'Beaftopia') {
+					return [set.species + ' is not legal in [Gen 9] Beaftopia.'];
+				}
+			}
+		},
+	},
 	{
         name: "[Gen 9] Climate Change",
         desc: [
